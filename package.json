@@ -1,0 +1,15 @@
+{
+  "name": "imdone-api",
+  "version": "1.0.0",
+  "description": "Plugin API for imdone",
+  "main": "plugin.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imdone/imdone-api.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imdone/imdone-api/issues"
+  },
+  "homepage": "https://imdone.io"
+}
