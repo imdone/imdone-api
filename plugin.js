@@ -1,4 +1,4 @@
-export default class Plugin {
+module.exports = class Plugin {
   constructor (repo) {
     this.repo = repo
     this.unimplWarning = {}
