@@ -1,6 +1,6 @@
 module.exports = class Plugin {
-  constructor (repo) {
-    this.repo = repo
+  constructor (project) {
+    this.project = project
     this.unimplWarning = {}
   }
   
