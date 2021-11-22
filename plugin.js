@@ -23,7 +23,7 @@ module.exports = class Plugin {
   }
 
   getBoardActions () {
-    this.unimplemented('getCardLinks(task)')
+    this.unimplemented('getBoardActions()')
     return []
   }
 
