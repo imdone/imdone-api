@@ -1,5 +1,4 @@
 const Task = require('imdone-core/lib/task')
-const fs = require('fs')
 
 module.exports = function newProject(_repo, _eventGateway) {
   let repo = _repo
@@ -30,10 +29,16 @@ module.exports = function newProject(_repo, _eventGateway) {
       repo.setFilter(filter)
     }
 
-    addCardMetadata (task, key, value) {
+    addMetadata (task, key, value) {
       if (!/^['"]/.test(value) && /\s/.test(value)) value = `"${value}"`
       const metaData = `${key}${repo.config.getMetaSep()}${value}`
-      const content = Task.addToLastCommentInContent.apply(card, [task.content, metaData, repo.config.isMetaNewLine()])
+      const content = task.addToLastCommentInContent(task.content, metaData, repo.config.isMetaNewLine())
+      this.updateCardContent(task, content)
+    }
+
+    addTag (task, tag) {
+      const tagContent = `${repo.config.getTagPrefix()}${tag}`
+      const content = task.addToLastCommentInContent(task.content, tagContent, repo.config.isMetaNewLine())
       this.updateCardContent(task, content)
     }
 
@@ -42,12 +47,7 @@ module.exports = function newProject(_repo, _eventGateway) {
     }
 
     newCard (list, path) {
-      // TODO move this to repo
-      const fullPath = repo.getFullPath(path)
-      if (!fs.existsSync(fullPath)) {
-        fs.writeFileSync(fullPath, '')
-      }
-      repo.newCard(list, fullPath)
+      repo.newCard(list, path)
     }
 
     snackBar ({message, type, duration}) {
