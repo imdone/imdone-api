@@ -1,8 +1,19 @@
 const Task = require('imdone-core/lib/task')
 
-module.exports = function newProject(_repo, _eventGateway) {
+module.exports = function newProject({_repo, _eventGateway, _shellGateway}) {
   let repo = _repo
   let eventGateway = _eventGateway
+  let shellGateway = _shellGateway
+
+  function getCardDescription (task) {
+    // const {
+    //   html,
+    //   encodedText,
+    //   encodedMD,
+    //   markdown
+    // } = repo.description(task)
+    return repo.description(task, -1)
+  }
 
   class Project {
     get path () {
@@ -27,6 +38,14 @@ module.exports = function newProject(_repo, _eventGateway) {
 
     set filter (filter) {
       repo.setFilter(filter)
+    }
+
+    getCardMarkdown(task) {
+      return getCardDescription(task).markdown
+    }
+
+    getCardHtml(task) {
+      return getCardDescription(task).html
     }
 
     addMetadata (task, key, value) {
@@ -56,6 +75,22 @@ module.exports = function newProject(_repo, _eventGateway) {
 
     toast ({message, type, duration}) {
       eventGateway.emit('toast', {message, type, duration})
+    }
+
+    filterLists (filter, lists) {
+      return repo.filterLists(filter, lists)
+    }
+
+    copyToClipboard (text, message) {
+      shellGateway.copyToClipboard(text, message)
+    }
+
+    openUrl (url) {
+      shellGateway.openUrl(url)
+    }
+
+    openPath (path) {
+      shellGateway.openPath(repo.getFullPath(path))
     }
   }
 
