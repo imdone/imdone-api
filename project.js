@@ -1,17 +1,9 @@
-const Task = require('imdone-core/lib/task')
-
 module.exports = function newProject({_repo, _eventGateway, _shellGateway}) {
   let repo = _repo
   let eventGateway = _eventGateway
   let shellGateway = _shellGateway
 
   function getCardDescription (task) {
-    // const {
-    //   html,
-    //   encodedText,
-    //   encodedMD,
-    //   markdown
-    // } = repo.description(task)
     return repo.description(task, -1)
   }
 
@@ -77,7 +69,7 @@ module.exports = function newProject({_repo, _eventGateway, _shellGateway}) {
       eventGateway.emit('toast', {message, type, duration})
     }
 
-    filterLists (filter, lists) {
+    filterLists (lists, filter) {
       return repo.filterLists(filter, lists)
     }
 

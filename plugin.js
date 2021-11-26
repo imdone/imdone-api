@@ -8,6 +8,10 @@ module.exports = class Plugin {
     this.unimplemented('onListsChange(lists)', {lists})
   }
 
+  onViewListsChange (lists) {
+    this.unimplemented('onViewListsChange(lists)', {lists})
+  }
+
   onBeforeRenderCard (el, task) {
     this.unimplemented('onBeforeRenderCard(el, task)', {el, task})
   }
