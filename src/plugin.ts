@@ -17,7 +17,7 @@ export abstract class Plugin {
   private project: Project
   private unimplWarning: Object
 
-  constructor (project) {
+  constructor (project: Project) {
     this.project = project
     this.unimplWarning = {}
   }

@@ -1,4 +1,4 @@
-import { Task, List } from "./project";
+import { Project, Task, List } from "./project";
 export interface CardLink {
     action: Function;
     pack: 'fas' | 'fab';
@@ -12,7 +12,7 @@ export interface BoardAction {
 export declare abstract class Plugin {
     private project;
     private unimplWarning;
-    constructor(project: any);
+    constructor(project: Project);
     onListsChange(lists: Array<List>): void;
     onViewListsChange(lists: Array<List>): void;
     onBeforeRenderCard(el: HTMLElement, task: Task): void;
