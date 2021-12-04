@@ -52,9 +52,6 @@ export declare class Project {
     get doneList(): string;
     get filter(): string;
     set filter(filter: string);
-    getCardProperties(task: Task): Object;
-    getCardMarkdown(task: Task): string;
-    getCardHtml(task: Task): string;
     addMetadata(task: Task, key: string, value: string): void;
     addTag(task: Task, tag: string): void;
     updateCardContent(task: Task, content: string): void;

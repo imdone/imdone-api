@@ -79,18 +79,6 @@ export class Project {
     this.repo.setFilter(filter)
   }
   
-  getCardProperties (task: Task): Object {
-    return this.repo.getCardProperties(task)
-  }
-
-  getCardMarkdown (task: Task): string {
-    return this.getCardDescription(task).markdown
-  }
-
-  getCardHtml (task: Task): string {
-    return this.getCardDescription(task).html
-  }
-
   addMetadata (task: Task, key: string, value: string): void {
     if (!/^['"]/.test(value) && /\s/.test(value)) value = `"${value}"`
     const metaData = `${key}${this.repo.config.getMetaSep()}${value}`
