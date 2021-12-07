@@ -51,10 +51,6 @@ export class Project {
     this.repo = repo
   }
 
-  private getCardDescription (task) {
-    return this.repo.description(task, -1)
-  }
-
   get path (): string {
     return this.repo.path
   }

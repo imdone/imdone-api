@@ -45,7 +45,6 @@ export declare class Project {
     private eventGateway;
     private shellGateway;
     constructor(repo: any, eventGateway: any, shellGateway: any);
-    private getCardDescription;
     get path(): string;
     get lists(): Array<List>;
     get allLists(): Array<List>;
