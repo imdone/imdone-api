@@ -19,5 +19,5 @@ export declare abstract class Plugin {
     getCardProperties(task: Task): Object;
     getCardLinks(task: Task): Array<CardLink>;
     getBoardActions(): Array<BoardAction>;
-    unimplemented(signature: string, props: Object): void;
+    protected unimplemented(signature: string): void;
 }

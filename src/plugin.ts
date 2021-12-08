@@ -24,37 +24,36 @@ export abstract class Plugin {
   
   // This method is called in the worker process, so there is no access to Project methods
   onListsChange (lists: Array<List>) {
-    this.unimplemented('onListsChange(lists)', {lists})
+    this.unimplemented('onListsChange(lists)')
   }
 
   // This method is called in the render process, so do not update tasks 
   onViewListsChange (lists: Array<List>) {
-    this.unimplemented('onViewListsChange(lists)', {lists})
+    this.unimplemented('onViewListsChange(lists)')
   }
 
   onBeforeRenderCard (el: HTMLElement, task: Task) {
-    this.unimplemented('onBeforeRenderCard(el, task)', {el, task})
+    this.unimplemented('onBeforeRenderCard(el, task)')
   }
 
   getCardProperties (task: Task): Object {
-    this.unimplemented('getCardProperties(task)', {task})
+    this.unimplemented('getCardProperties(task)')
     return {}
   }
 
   getCardLinks (task: Task): Array<CardLink> {
-    this.unimplemented('getCardLinks(task)', {task})
+    this.unimplemented('getCardLinks(task)')
     return []
   }
 
   getBoardActions (): Array<BoardAction> {
-    this.unimplemented('getBoardActions()', null)
+    this.unimplemented('getBoardActions()')
     return []
   }
 
-  unimplemented (signature: string, props: Object) {
+  protected unimplemented (signature: string) {
     if (this.unimplWarning[signature]) return
     console.info(`${this.constructor.name}.${signature} is not implemented.`)
-    if (props) console.info(props)
     this.unimplWarning[signature] = true
   }
 }
