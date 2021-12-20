@@ -36,95 +36,58 @@ export interface List {
 
 export interface Alert {
   message: string
-  type: 'is-white'|'is-black'|'is-light'|'is-dark'|'is-primary'|'is-info'|'is-success'|'is-warning'|'is-danger'
-  duration: number
+  type?: 'is-white'|'is-black'|'is-light'|'is-dark'|'is-primary'|'is-info'|'is-success'|'is-warning'|'is-danger'
+  duration?: number // default: 5000
 }
 
+// DOING: ## Move the implementation to imdone-core project
 export class Project {
-  private repo : any
-  private eventGateway : any
-  private shellGateway : any
-
-  constructor (repo: any, eventGateway: any, shellGateway: any) {
-    this.eventGateway = eventGateway
-    this.shellGateway = shellGateway
-    this.repo = repo
-  }
-
   get path (): string {
-    return this.repo.path
+    return null
   }
 
   get lists (): Array<List> {
-    return this.repo.defaultViewLists
-  }
-
-  get allLists (): Array<List> {
-    return this.repo.lists
+    return null
   }
 
   get doneList (): string {
-    return this.repo.doneList
+    return null
   }
 
   get filter (): string {
-    return this.repo.filter
+    return null
   }
 
   set filter (filter: string) {
-    this.repo.setFilter(filter)
+    //
   }
+
+  init (repo: any): void {}
+
+  destroy (): void {}
   
-  addMetadata (task: Task, key: string, value: string): void {
-    if (!/^['"]/.test(value) && /\s/.test(value)) value = `"${value}"`
-    const metaData = `${key}${this.repo.config.getMetaSep()}${value}`
-    // @ts-expect-error
-    const content = task.addToLastCommentInContent(task.content, metaData, this.repo.config.isMetaNewLine())
-    this.updateCardContent(task, content)
+  addMetadata (task: Task, key: string, value: string): void {}
+
+  addTag (task: Task, tag: string): void {}
+
+  updateCardContent (task: Task, content: string): void {}
+
+  newCard (list: string, path: string): void {}
+
+  snackBar (alert: Alert): void {}
+
+  toast (alert: Alert): void {}
+
+  filterLists (filter: string, lists: Array<List>): Array<List> {
+    return null
   }
 
-  addTag (task: Task, tag: string): void {
-    const tagContent = `${this.repo.config.getTagPrefix()}${tag}`
-    // @ts-expect-error
-    const content = task.addToLastCommentInContent(task.content, tagContent, this.repo.config.isMetaNewLine())
-    this.updateCardContent(task, content)
-  }
+  copyToClipboard (text: string, message: string): void {}
 
-  updateCardContent (task: Task, content: string): void {
-    this.repo.modifyTaskFromContent(task, content)
-  }
+  openUrl (url: string): void {}
 
-  updateInterpretedContent (task: Task, content: string): string {
-    task.interpretedContent = content
-    return content
-  }
+  openPath (path: string): void {}
 
-  newCard (list: string, path: string): void {
-    this.repo.newCard(list, path)
-  }
-
-  snackBar ({message, type, duration}: Alert): void {
-    this.eventGateway.emit('alert', {msg: message, type: type || 'is-info', duration})
-  }
-
-  toast ({message, type, duration}: Alert): void {
-    this.eventGateway.emit('toast', {message, type, duration})
-  }
-
-  filterLists (lists: Array<List>, filter: string): Array<List> {
-    return this.repo.filterLists(filter, lists)
-  }
-
-  copyToClipboard (text: string, message: string): void {
-    this.shellGateway.copyToClipboard(text, message)
-  }
-
-  openUrl (url: string): void {
-    this.shellGateway.openUrl(url)
-  }
-
-  openPath (path: string): void {
-    this.shellGateway.openPath(this.repo.getFullPath(path))
-  }
+  saveFile (content: string, path: string): void {}
 }
 

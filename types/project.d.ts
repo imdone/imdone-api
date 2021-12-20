@@ -37,29 +37,26 @@ export interface List {
 }
 export interface Alert {
     message: string;
-    type: 'is-white' | 'is-black' | 'is-light' | 'is-dark' | 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger';
-    duration: number;
+    type?: 'is-white' | 'is-black' | 'is-light' | 'is-dark' | 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger';
+    duration?: number;
 }
 export declare class Project {
-    private repo;
-    private eventGateway;
-    private shellGateway;
-    constructor(repo: any, eventGateway: any, shellGateway: any);
     get path(): string;
     get lists(): Array<List>;
-    get allLists(): Array<List>;
     get doneList(): string;
     get filter(): string;
     set filter(filter: string);
+    init(repo: any): void;
+    destroy(): void;
     addMetadata(task: Task, key: string, value: string): void;
     addTag(task: Task, tag: string): void;
     updateCardContent(task: Task, content: string): void;
-    updateInterpretedContent(task: Task, content: string): string;
     newCard(list: string, path: string): void;
-    snackBar({ message, type, duration }: Alert): void;
-    toast({ message, type, duration }: Alert): void;
-    filterLists(lists: Array<List>, filter: string): Array<List>;
+    snackBar(alert: Alert): void;
+    toast(alert: Alert): void;
+    filterLists(filter: string, lists: Array<List>): Array<List>;
     copyToClipboard(text: string, message: string): void;
     openUrl(url: string): void;
     openPath(path: string): void;
+    saveFile(content: string, path: string): void;
 }

@@ -21,19 +21,12 @@ export abstract class Plugin {
     this.project = project
     this.unimplWarning = {}
   }
+
+  destroy (): void {}
   
   // This method is called in the worker process, so there is no access to Project methods
   onListsChange (lists: Array<List>) {
     this.unimplemented('onListsChange(lists)')
-  }
-
-  // This method is called in the render process, so do not update tasks 
-  onViewListsChange (lists: Array<List>) {
-    this.unimplemented('onViewListsChange(lists)')
-  }
-
-  onBeforeRenderCard (el: HTMLElement, task: Task) {
-    this.unimplemented('onBeforeRenderCard(el, task)')
   }
 
   getCardProperties (task: Task): Object {
