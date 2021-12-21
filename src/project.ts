@@ -23,11 +23,6 @@ export interface Task {
   }
 }
 
-export interface Description {
-  markdown: string
-  html: string
-}
-
 export interface List {
   name: string
   filter: string
@@ -89,5 +84,7 @@ export class Project {
   openPath (path: string): void {}
 
   saveFile (content: string, path: string): void {}
+
+  setFilter (filter: string): void {}
 }
 

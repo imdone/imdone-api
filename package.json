@@ -1,6 +1,6 @@
 {
   "name": "imdone-api",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Plugin API for imdone",
   "main": "./lib/plugin.js",
   "types": "./types/plugin.d.ts",

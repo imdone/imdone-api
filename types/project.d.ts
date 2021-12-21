@@ -59,4 +59,5 @@ export declare class Project {
     openUrl(url: string): void;
     openPath(path: string): void;
     saveFile(content: string, path: string): void;
+    setFilter(filter: string): void;
 }
