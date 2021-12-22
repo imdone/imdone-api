@@ -29,13 +29,18 @@ export interface List {
   tasks: Array<Task>
 }
 
+export interface NewCardOpts {
+  list: string
+  path: string
+  template: string
+}
+
 export interface Alert {
   message: string
   type?: 'is-white'|'is-black'|'is-light'|'is-dark'|'is-primary'|'is-info'|'is-success'|'is-warning'|'is-danger'
   duration?: number // default: 5000
 }
 
-// DOING: ## Move the implementation to imdone-core project
 export class Project {
   get path (): string {
     return null
@@ -67,7 +72,7 @@ export class Project {
 
   updateCardContent (task: Task, content: string): void {}
 
-  newCard (list: string, path: string): void {}
+  newCard (opts: NewCardOpts): void {}
 
   snackBar (alert: Alert): void {}
 

@@ -26,14 +26,15 @@ export interface Task {
         ext: string;
     };
 }
-export interface Description {
-    markdown: string;
-    html: string;
-}
 export interface List {
     name: string;
     filter: string;
     tasks: Array<Task>;
+}
+export interface NewCardOpts {
+    list: string;
+    path: string;
+    template: string;
 }
 export interface Alert {
     message: string;
@@ -51,7 +52,7 @@ export declare class Project {
     addMetadata(task: Task, key: string, value: string): void;
     addTag(task: Task, tag: string): void;
     updateCardContent(task: Task, content: string): void;
-    newCard(list: string, path: string): void;
+    newCard(opts: NewCardOpts): void;
     snackBar(alert: Alert): void;
     toast(alert: Alert): void;
     filterLists(filter: string, lists: Array<List>): Array<List>;

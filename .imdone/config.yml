@@ -47,6 +47,9 @@ settings:
       name: Recently Completed
   journalTemplate: null
   theme: dark
+  views:
+    - id: default
+      filter: ''
   cards:
     colors: []
     template: |

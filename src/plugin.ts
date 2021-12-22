@@ -24,7 +24,6 @@ export abstract class Plugin {
 
   destroy (): void {}
   
-  // This method is called in the worker process, so there is no access to Project methods
   onListsChange (lists: Array<List>) {
     this.unimplemented('onListsChange(lists)')
   }
