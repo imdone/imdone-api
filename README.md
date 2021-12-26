@@ -2,9 +2,6 @@
 
 A plugin api for [imdone: Kanban with extreme context](https://imdone.io/).
 Starting in Imdone 2.0, you will be able to search and download plugins. In the mean time, you can get started creating and sharing plugins with the community.
-<!-- 
-#TODO: Add plugin discord group
--->
 
 ## Creating a plugin for Imdone
 1. Create a `plugins` folder under your project's `.imdone` folder.

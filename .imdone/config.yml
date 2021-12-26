@@ -25,15 +25,14 @@ lists:
   - hidden: false
     name: DOING
   - hidden: false
-    ignore: true
+    ignore: false
     name: DONE
-  - filter: 'completedDate > "${14 days ago}" -completed'
+  - filter: 'completedDate > "${7 days ago}" -completed'
     hidden: false
     id: 1
     name: Recently Completed
 settings:
   openIn: code
-  customOpenIn: ''
   editorTheme: blackboard
   journalType: New File
   journalPath: imdone-tasks
@@ -65,7 +64,7 @@ settings:
         title: Tweet this card
     trackChanges: false
     metaNewLine: false
-    addCompletedMeta: false
+    addCompletedMeta: true
     addCheckBoxTasks: true
     doneList: DONE
     taskPrefix: '#'
