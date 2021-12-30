@@ -33,6 +33,7 @@ lists:
     name: Recently Completed
 settings:
   openIn: code
+  customOpenIn: ''
   editorTheme: blackboard
   journalType: New File
   journalPath: imdone-tasks

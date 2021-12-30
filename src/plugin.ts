@@ -24,17 +24,25 @@ export abstract class Plugin {
 
   destroy (): void {}
   
-  onListsChange (lists: Array<List>) {
-    this.unimplemented('onListsChange(lists)')
+  onBeforeBoardUpdate () {
+    this.unimplemented('onBeforeBoardUpdate()')
+  }
+  
+  onBoardUpdate (lists: Array<List>) {
+    this.unimplemented('onBoardUpdate(lists: Array<List>)')
+  }
+
+  onTaskUpdate (task: Task) {
+    this.unimplemented('onTaskUpdate(task: Task)')
   }
 
   getCardProperties (task: Task): Object {
-    this.unimplemented('getCardProperties(task)')
+    this.unimplemented('getCardProperties(task: Task)')
     return {}
   }
 
   getCardLinks (task: Task): Array<CardLink> {
-    this.unimplemented('getCardLinks(task)')
+    this.unimplemented('getCardLinks(task: Task)')
     return []
   }
 

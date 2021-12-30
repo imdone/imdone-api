@@ -14,7 +14,9 @@ export declare abstract class Plugin {
     private unimplWarning;
     constructor(project: Project);
     destroy(): void;
-    onListsChange(lists: Array<List>): void;
+    onBeforeBoardUpdate(): void;
+    onBoardUpdate(lists: Array<List>): void;
+    onTaskUpdate(task: Task): void;
     getCardProperties(task: Task): Object;
     getCardLinks(task: Task): Array<CardLink>;
     getBoardActions(): Array<BoardAction>;
