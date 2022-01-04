@@ -1,10 +1,13 @@
-import { Project, Task, List } from "./project"
+import { Project, Task, List } from './project'
 
-export interface CardLink {
+import { Settings } from './settings'
+
+export interface CardAction {
   action: Function
   pack: 'fas'|'fab'
   icon: string
   title: string
+  actions: Array<CardAction>
 }
 
 export interface BoardAction {
@@ -41,8 +44,8 @@ export abstract class Plugin {
     return {}
   }
 
-  getCardLinks (task: Task): Array<CardLink> {
-    this.unimplemented('getCardLinks(task: Task)')
+  getCardActions (task: Task): Array<CardAction> {
+    this.unimplemented('getCardActions(task: Task)')
     return []
   }
 
@@ -51,7 +54,16 @@ export abstract class Plugin {
     return []
   }
 
-  protected unimplemented (signature: string) {
+  getSettingsSchema (): Settings {
+    this.unimplemented('getSettingsSchema()')
+    return null
+  }
+
+  private getSettings (): any {
+    return null
+  }
+
+  private unimplemented (signature: string) {
     if (this.unimplWarning[signature]) return
     console.info(`${this.constructor.name}.${signature} is not implemented.`)
     this.unimplWarning[signature] = true

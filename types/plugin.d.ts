@@ -1,9 +1,11 @@
-import { Project, Task, List } from "./project";
-export interface CardLink {
+import { Project, Task, List } from './project';
+import { Settings } from './settings';
+export interface CardAction {
     action: Function;
     pack: 'fas' | 'fab';
     icon: string;
     title: string;
+    actions: Array<CardAction>;
 }
 export interface BoardAction {
     action: Function;
@@ -18,7 +20,9 @@ export declare abstract class Plugin {
     onBoardUpdate(lists: Array<List>): void;
     onTaskUpdate(task: Task): void;
     getCardProperties(task: Task): Object;
-    getCardLinks(task: Task): Array<CardLink>;
+    getCardActions(task: Task): Array<CardAction>;
     getBoardActions(): Array<BoardAction>;
-    protected unimplemented(signature: string): void;
+    getSettingsSchema(): Settings;
+    private getSettings;
+    private unimplemented;
 }
