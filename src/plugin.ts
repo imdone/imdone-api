@@ -7,7 +7,6 @@ export interface CardAction {
   pack: 'fas'|'fab'
   icon: string
   title: string
-  actions: Array<CardAction>
 }
 
 export interface BoardAction {

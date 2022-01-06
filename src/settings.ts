@@ -1,18 +1,43 @@
 export class Property {
   title: string
   description: string
-  type: 'boolean'|'number'|'string'|'array'|'object'
-  constructor (title: string, description: string, type:'boolean'|'number'|'string'|'array'|'object' ) {
-    this.title = title
-    this.description = description
+  type: 'boolean'|'number'|'string'|'array'
+  
+  constructor (type:'boolean'|'number'|'string'|'array') {
     this.type = type
+  }
+
+  setTitle (title: string): Property {
+    this.title = title
+    return this
+  }
+
+  setDescription (description: string): Property {
+    this.description = description
+    return this
   }
 }
 
 export class BooleanProperty extends Property {
   default: boolean
-  constructor (title: string, description: string) {
-    super(title, description, 'boolean')
+  
+  constructor () {
+    super('boolean')
+  }
+
+  setDefault (_default: boolean): BooleanProperty {
+    this.default = _default
+    return this
+  }
+
+  setTitle (title: string): BooleanProperty {
+    this.title = title
+    return this
+  }
+
+  setDescription (description: string): BooleanProperty {
+    this.description = description
+    return this
   }
 }
 
@@ -20,53 +45,127 @@ export class NumberProperty extends Property {
   minimum: number
   maximum: number
   default: number
-  constructor (title: string, description: string) {
-    super(title, description, 'number')
+  
+  constructor () {
+    super('number')
+  }
+
+  setMinimum (min: number): NumberProperty {
+    this.minimum = min
+    return this
+  }
+
+  setMaximum (max: number): NumberProperty {
+    this.maximum = max
+    return this
+  }
+
+  setDefault (_default: number): NumberProperty {
+    this.default = _default
+    return this
+  }
+
+  setTitle (title: string): NumberProperty {
+    this.title = title
+    return this
+  }
+
+  setDescription (description: string): NumberProperty {
+    this.description = description
+    return this
   }
 }
 
 export class StringProperty extends Property {
   default: string
   enum: Array<string>
-  editor: false
-  required: false
-  constructor (title: string, description: string) {
-    super(title, description, 'string')
+  editor: boolean = false
+  required: boolean = false
+  
+  constructor () {
+    super('string')
   }
-}
 
-export class ObjectProperty extends Property {
-  properties: {[name: string]: Property}
-  constructor (title: string, properties: {[name: string]: Property}) {
-    super(title, '', 'object')
-    this.properties = properties
+  setDefault (_default: string): StringProperty {
+    this.default = _default
+    return this
+  }
+
+  allowedValues (_enum: Array<string>): StringProperty {
+    this.enum = _enum
+    return this
+  }
+
+  textEditor (enable: boolean): StringProperty {
+    this.editor = enable
+    return this
+  }
+
+  setRequired (required: boolean): StringProperty {
+    this.required = required
+    return this
+  }
+
+  setTitle (title: string): StringProperty {
+    this.title = title
+    return this
+  }
+
+  setDescription (description: string): StringProperty {
+    this.description = description
+    return this
   }
 }
 
 export class ArrayItems {
-  properties: {[name: string]: ObjectProperty|StringProperty}
+  properties: {[name: string]: StringProperty|NumberProperty|BooleanProperty} = {}
   title: string
-  draggable: boolean
-  type: 'object'
-  constructor (title: string, properties: {[name: string]: ObjectProperty|StringProperty}) {
-    this.title = title
-    this.properties = properties
+  draggable: boolean = false
+  type: string = 'object'
+  constructor () {
     this.type = 'object'
-    this.draggable = false
-    }
+  }
 }
 
 export class ArrayProperty extends Property {
   items: ArrayItems
-  constructor (title: string, description: string, items: ArrayItems) {
-    super(title, description, 'array')
-    this.items = items
+  
+  constructor () {
+    super('array')
+    this.items = new ArrayItems()
+  }
+
+  itemTitle (title: string): ArrayProperty {
+    this.items.title = title
+    return this
+  }
+
+  itemsDraggable (draggable: boolean): ArrayProperty {
+    this.items.draggable = draggable
+    return this
+  }
+
+  addItemProperty (name: string, property: StringProperty|NumberProperty|BooleanProperty): ArrayProperty {
+    this.items.properties[name] = property
+    return this
+  }
+
+  setTitle (title: string): ArrayProperty {
+    this.title = title
+    return this
+  }
+
+  setDescription (description: string): ArrayProperty {
+    this.description = description
+    return this
   }
 }
 
 export class Settings {
-  properties: {[name: string]: ArrayProperty|StringProperty|NumberProperty|BooleanProperty}
-  constructor (properties: {[name: string]: ArrayProperty|StringProperty|NumberProperty|BooleanProperty}) {
-    this.properties = properties
+  properties: {[name: string]: ArrayProperty|StringProperty|NumberProperty|BooleanProperty} = {}
+  type: string = 'object'
+  addProperty (name: string, property: ArrayProperty|StringProperty|NumberProperty|BooleanProperty): Settings {
+    this.properties[name] = property
+    return this
   }
 }
