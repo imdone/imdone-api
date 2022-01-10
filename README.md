@@ -19,5 +19,6 @@ Starting in Imdone 2.0, you will be able to search and download plugins. In the 
            └── package.json
    ```
 1. Look at [imdone/imdone-sample-plugin: A sample plugin for Imdone](https://github.com/imdone/imdone-sample-plugin) for inspiration.
+2. To make your plugin available for all imdone users, open a PR at [imdone/imdone-api](https://github.com/imdone/imdone-api). 
 
 ## Join the discussion on [discord](https://discord.gg/ZAETw2dC)
