@@ -1,30 +1,44 @@
 export interface Task {
-    list: string;
-    filteredListName: string;
-    line: number;
-    order: number;
-    beforeText: string;
-    content: string;
-    interpretedContent: string;
     active: boolean;
-    allTags: Array<string>;
     allContext: Array<string>;
     allMeta: {
         [key: string]: Array<string>;
     };
-    metaKeys: Array<string>;
-    totals: {
-        [key: string]: number;
+    allTags: Array<string>;
+    beforeText: string;
+    content: string;
+    context: Array<string>;
+    created: string;
+    createdDate: Date;
+    data: object;
+    expand: boolean;
+    frontMatter: object;
+    filteredListName: string;
+    interpretedContent: string;
+    lastLine: number;
+    line: number;
+    list: string;
+    meta: {
+        [key: string]: Array<string>;
     };
+    metaKeys: Array<string>;
+    order: number;
     progress: {
         completed: number;
         total: number;
     };
     source: {
+        createdTime: string;
         path: string;
         lang: string;
         ext: string;
+        modifiedTime: string;
     };
+    tags: Array<string>;
+    totals: {
+        [key: string]: number;
+    };
+    type: 'CODE' | 'HASHTAG' | 'HASH_META_ORDER' | 'MARKDOWN';
 }
 export interface List {
     name: string;
@@ -49,16 +63,18 @@ export declare class Project {
     set filter(filter: string);
     init(repo: any): void;
     destroy(): void;
-    addMetadata(task: Task, key: string, value: string): void;
-    addTag(task: Task, tag: string): void;
-    updateCardContent(task: Task, content: string): void;
     newCard(opts: NewCardOpts): void;
-    snackBar(alert: Alert): void;
-    toast(alert: Alert): void;
     filterLists(filter: string, lists: Array<List>): Array<List>;
-    copyToClipboard(text: string, message: string): void;
-    openUrl(url: string): void;
-    openPath(path: string): void;
     saveFile(content: string, path: string): void;
     setFilter(filter: string): void;
+    updateCardContent(task: Task, content: string): Promise<void>;
+    addMetadata(task: Task, key: string, value: string): Promise<void>;
+    removeMetadata(task: Task, key: string, value: string): Promise<void>;
+    addTag(task: Task, tag: string): Promise<void>;
+    removeTag(task: Task, tag: string): Promise<void>;
+    snackBar(alert: Alert): Promise<void>;
+    toast(alert: Alert): Promise<void>;
+    copyToClipboard(text: string, message: string): Promise<void>;
+    openUrl(url: string): Promise<void>;
+    openPath(path: string): Promise<void>;
 }

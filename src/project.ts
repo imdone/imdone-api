@@ -1,26 +1,38 @@
 export interface Task {
-  list: string
-  filteredListName: string
-  line: number
-  order: number
-  beforeText: string
-  content: string
-  interpretedContent: string
   active: boolean
-  allTags: Array<string>
   allContext: Array<string>
   allMeta: { [key:string]:Array<string> }
-  metaKeys: Array<string>,
-  totals: { [key:string]:number }
+  allTags: Array<string>
+  beforeText: string
+  content: string
+  context: Array<string>
+  created: string
+  createdDate: Date
+  data: object
+  expand: boolean
+  frontMatter: object
+  filteredListName: string
+  interpretedContent: string
+  lastLine: number
+  line: number
+  list: string
+  meta: { [key:string]:Array<string> }
+  metaKeys: Array<string>
+  order: number
   progress: {
-    completed: number,
+    completed: number
     total: number
   }
   source: {
-    path: string,
-    lang: string,
+    createdTime: string
+    path: string
+    lang: string
     ext: string
+    modifiedTime: string
   }
+  tags: Array<string>
+  totals: { [key:string]:number }
+  type: 'CODE'|'HASHTAG'|'HASH_META_ORDER'|'MARKDOWN'
 }
 
 export interface List {
@@ -66,30 +78,34 @@ export class Project {
 
   destroy (): void {}
   
-  addMetadata (task: Task, key: string, value: string): void {}
-
-  addTag (task: Task, tag: string): void {}
-
-  updateCardContent (task: Task, content: string): void {}
-
   newCard (opts: NewCardOpts): void {}
-
-  snackBar (alert: Alert): void {}
-
-  toast (alert: Alert): void {}
 
   filterLists (filter: string, lists: Array<List>): Array<List> {
     return null
   }
 
-  copyToClipboard (text: string, message: string): void {}
-
-  openUrl (url: string): void {}
-
-  openPath (path: string): void {}
-
   saveFile (content: string, path: string): void {}
 
   setFilter (filter: string): void {}
+
+  async updateCardContent (task: Task, content: string): Promise<void> {}
+
+  async addMetadata (task: Task, key: string, value: string): Promise<void> {}
+
+  async removeMetadata (task: Task, key: string, value: string): Promise<void> {}
+
+  async addTag (task: Task, tag: string): Promise<void> {}
+
+  async removeTag (task: Task, tag: string): Promise<void> {}
+
+  async snackBar (alert: Alert): Promise<void> {}
+
+  async toast (alert: Alert): Promise<void> {}
+
+  async copyToClipboard (text: string, message: string): Promise<void> {}
+
+  async openUrl (url: string): Promise<void> {}
+
+  async openPath (path: string): Promise<void> {}
 }
 
