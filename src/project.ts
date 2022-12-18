@@ -70,6 +70,10 @@ export class Project {
     return null
   }
 
+  get filteredCards (): Array<Task> {
+    return null
+  }
+
   set filter (filter: string) {
     //
   }
