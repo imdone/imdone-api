@@ -10,11 +10,31 @@ export interface BoardAction {
     action: Function;
     name: string;
 }
+export interface Meta {
+    key: string;
+    value: string;
+}
+export interface OnBeforeAddTaskRequest {
+    path: string;
+    list: string;
+    content: string;
+    meta: Array<Meta>;
+    tags: Array<string>;
+    contexts: Array<string>;
+}
+export interface OnBeforeAddTaskResponse {
+    path: string;
+    content: string;
+    meta: Array<Meta>;
+    tags: Array<string>;
+    contexts: Array<string>;
+}
 export declare abstract class Plugin {
     private project;
     private unimplWarning;
     constructor(project: Project);
     destroy(): void;
+    onBeforeAddTask(request: OnBeforeAddTaskRequest): Promise<OnBeforeAddTaskResponse>;
     onBeforeBoardUpdate(): void;
     onBoardUpdate(lists: Array<List>): void;
     onTaskUpdate(task: Task): void;

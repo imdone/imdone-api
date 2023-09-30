@@ -14,6 +14,27 @@ export interface BoardAction {
   name: string
 }
 
+export interface Meta {
+  key: string
+  value: string
+}
+export interface OnBeforeAddTaskRequest {
+  path: string
+  list: string
+  content: string
+  meta: Array<Meta>
+  tags: Array<string>
+  contexts: Array<string>
+}
+
+export interface OnBeforeAddTaskResponse {
+  path: string
+  content: string
+  meta: Array<Meta>
+  tags: Array<string>
+  contexts: Array<string>
+}
+
 export abstract class Plugin {
 
   private project: Project
@@ -26,6 +47,12 @@ export abstract class Plugin {
 
   destroy (): void {}
   
+  async onBeforeAddTask (request: OnBeforeAddTaskRequest): Promise<OnBeforeAddTaskResponse> {
+    this.unimplemented('onBeforeAddTask()')
+    const { path, list, content, meta, tags, contexts } = request
+    return { path, content, meta, tags, contexts }
+  }
+
   onBeforeBoardUpdate () {
     this.unimplemented('onBeforeBoardUpdate()')
   }
