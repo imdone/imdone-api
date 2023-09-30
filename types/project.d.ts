@@ -60,6 +60,7 @@ export declare class Project {
     get lists(): Array<List>;
     get doneList(): string;
     get filter(): string;
+    get filteredCards(): Array<Task>;
     set filter(filter: string);
     init(repo: any): void;
     destroy(): void;
