@@ -38,6 +38,7 @@ export declare abstract class Plugin {
     onBeforeBoardUpdate(): void;
     onBoardUpdate(lists: Array<List>): void;
     onTaskUpdate(task: Task): void;
+    onAfterDeleteTask(task: Task): void;
     getCardProperties(task: Task): Object;
     getCardActions(task: Task): Array<CardAction>;
     getBoardActions(): Array<BoardAction>;

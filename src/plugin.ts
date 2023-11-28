@@ -65,6 +65,10 @@ export abstract class Plugin {
     this.unimplemented('onTaskUpdate(task: Task)')
   }
 
+  onAfterDeleteTask (task: Task) {
+    this.unimplemented('onAfterDeleteTask(task: Task)')
+  }
+
   getCardProperties (task: Task): Object {
     this.unimplemented('getCardProperties(task: Task)')
     return {}
