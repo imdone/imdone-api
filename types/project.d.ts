@@ -50,6 +50,18 @@ export interface NewCardOpts {
     path: string;
     template: string;
 }
+export interface AddCardToFileOpts {
+    path: string;
+    content: string;
+    list?: string;
+    tags?: Array<string>;
+    contexts?: Array<string>;
+    meta?: Array<string>;
+    useCardTemplate?: boolean;
+}
+export interface AddCardToFileResponse {
+    task: Task;
+}
 export interface Alert {
     message: string;
     type?: 'is-white' | 'is-black' | 'is-light' | 'is-dark' | 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger';
@@ -65,6 +77,7 @@ export declare class Project {
     init(repo: any): void;
     destroy(): void;
     newCard(opts: NewCardOpts): void;
+    addCardToFile(opts: AddCardToFileOpts): Promise<AddCardToFileResponse>;
     filterLists(filter: string, lists: Array<List>): Array<List>;
     saveFile(content: string, path: string): void;
     setFilter(filter: string): void;
