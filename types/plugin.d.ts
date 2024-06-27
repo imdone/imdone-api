@@ -9,6 +9,7 @@ export interface CardAction {
 export interface BoardAction {
     action: Function;
     name: string;
+    category?: string;
 }
 export interface Meta {
     key: string;
@@ -21,6 +22,7 @@ export interface OnBeforeAddTaskRequest {
     meta: Array<Meta>;
     tags: Array<string>;
     contexts: Array<string>;
+    useCardTemplate: boolean;
 }
 export interface OnBeforeAddTaskResponse {
     path: string;
