@@ -7,9 +7,9 @@ export interface CardAction {
     title: string;
 }
 export interface BoardAction {
-    action: Function;
+    action: (task?: Task) => void;
     name: string;
-    category?: string;
+    keys?: Array<string>;
 }
 export interface Meta {
     key: string;
