@@ -4,14 +4,14 @@ import { Settings } from './settings'
 
 export interface CardAction {
   action: Function
+  title: string
   pack: 'fas'|'fab'
   icon: string
-  title: string
 }
 
 export interface BoardAction {
   action: (task?: Task) => void
-  name: string
+  title: string
   keys?: Array<string>
 }
 
