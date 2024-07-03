@@ -19,6 +19,7 @@ export interface Meta {
   key: string
   value: string
 }
+
 export interface OnBeforeAddTaskRequest {
   path: string
   list: string
