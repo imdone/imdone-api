@@ -2,13 +2,14 @@ import { Project, Task, List } from './project';
 import { Settings } from './settings';
 export interface CardAction {
     action: Function;
+    title: string;
     pack: 'fas' | 'fab';
     icon: string;
-    title: string;
 }
 export interface BoardAction {
-    action: Function;
-    name: string;
+    action: (task?: Task) => void;
+    title: string;
+    keys?: Array<string>;
 }
 export interface Meta {
     key: string;
@@ -21,6 +22,7 @@ export interface OnBeforeAddTaskRequest {
     meta: Array<Meta>;
     tags: Array<string>;
     contexts: Array<string>;
+    useCardTemplate: boolean;
 }
 export interface OnBeforeAddTaskResponse {
     path: string;
