@@ -1,3 +1,7 @@
+export interface Meta {
+  [key:string]:Array<string>
+}
+
 export interface Task {
   active: boolean
   allContext: Array<string>
@@ -109,6 +113,18 @@ export class Project {
   saveFile (content: string, path: string): void {}
 
   setFilter (filter: string): void {}
+
+  addMetaToContent(meta: Meta, content: string): string {
+    return null
+  }
+
+  addTagsToContent(tags: Array<string>, content: string ): string {
+    return null
+  }
+
+  addContextToContent(contexts: Array<string>, content: string): string {
+    return null
+  }
 
   async updateCardContent (task: Task, content: string): Promise<void> {}
 

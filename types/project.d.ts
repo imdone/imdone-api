@@ -1,3 +1,6 @@
+export interface Meta {
+    [key: string]: Array<string>;
+}
 export interface Task {
     active: boolean;
     allContext: Array<string>;
@@ -81,6 +84,9 @@ export declare class Project {
     filterLists(filter: string, lists: Array<List>): Array<List>;
     saveFile(content: string, path: string): void;
     setFilter(filter: string): void;
+    addMetaToContent(meta: Meta, content: string): string;
+    addTagsToContent(tags: Array<string>, content: string): string;
+    addContextToContent(contexts: Array<string>, content: string): string;
     updateCardContent(task: Task, content: string): Promise<void>;
     addMetadata(task: Task, key: string, value: string): Promise<void>;
     removeMetadata(task: Task, key: string, value: string): Promise<void>;
