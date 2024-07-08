@@ -1,5 +1,6 @@
 export interface Meta {
-  [key:string]:Array<string>
+  key: string
+  value: string
 }
 
 export interface Task {
@@ -57,7 +58,7 @@ export interface AddCardToFileOpts {
   list?: string
   tags?: Array<string>
   contexts?: Array<string>
-  meta?: Array<string>
+  meta?: Array<Meta>
   useCardTemplate?: boolean
 }
 
@@ -114,7 +115,7 @@ export class Project {
 
   setFilter (filter: string): void {}
 
-  addMetaToContent(meta: Meta, content: string): string {
+  addMetaToContent(meta: Array<Meta>, content: string): string {
     return null
   }
 
