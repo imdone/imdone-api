@@ -1,3 +1,7 @@
+export interface Meta {
+    key: string;
+    value: string;
+}
 export interface Task {
     active: boolean;
     allContext: Array<string>;
@@ -56,7 +60,7 @@ export interface AddCardToFileOpts {
     list?: string;
     tags?: Array<string>;
     contexts?: Array<string>;
-    meta?: Array<string>;
+    meta?: Array<Meta>;
     useCardTemplate?: boolean;
 }
 export interface AddCardToFileResponse {
@@ -81,6 +85,9 @@ export declare class Project {
     filterLists(filter: string, lists: Array<List>): Array<List>;
     saveFile(content: string, path: string): void;
     setFilter(filter: string): void;
+    addMetaToContent(meta: Array<Meta>, content: string): string;
+    addTagsToContent(tags: Array<string>, content: string): string;
+    addContextToContent(contexts: Array<string>, content: string): string;
     updateCardContent(task: Task, content: string): Promise<void>;
     addMetadata(task: Task, key: string, value: string): Promise<void>;
     removeMetadata(task: Task, key: string, value: string): Promise<void>;

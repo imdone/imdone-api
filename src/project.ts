@@ -1,3 +1,8 @@
+export interface Meta {
+  key: string
+  value: string
+}
+
 export interface Task {
   active: boolean
   allContext: Array<string>
@@ -53,7 +58,7 @@ export interface AddCardToFileOpts {
   list?: string
   tags?: Array<string>
   contexts?: Array<string>
-  meta?: Array<string>
+  meta?: Array<Meta>
   useCardTemplate?: boolean
 }
 
@@ -109,6 +114,18 @@ export class Project {
   saveFile (content: string, path: string): void {}
 
   setFilter (filter: string): void {}
+
+  addMetaToContent(meta: Array<Meta>, content: string): string {
+    return null
+  }
+
+  addTagsToContent(tags: Array<string>, content: string ): string {
+    return null
+  }
+
+  addContextToContent(contexts: Array<string>, content: string): string {
+    return null
+  }
 
   async updateCardContent (task: Task, content: string): Promise<void> {}
 
