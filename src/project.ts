@@ -74,23 +74,23 @@ export interface Alert {
 
 export class Project {
   get path (): string {
-    return null
+    return
   }
 
   get lists (): Array<List> {
-    return null
+    return
   }
 
   get doneList (): string {
-    return null
+    return
   }
 
   get filter (): string {
-    return null
+    return
   }
 
   get filteredCards (): Array<Task> {
-    return null
+    return
   }
 
   set filter (filter: string) {
@@ -100,15 +100,19 @@ export class Project {
   init (repo: any): void {}
 
   destroy (): void {}
+
+  renderMarkdown (content: string): string {
+    return
+  }
   
   newCard (opts: NewCardOpts): void {}
 
   async addCardToFile(opts: AddCardToFileOpts): Promise<AddCardToFileResponse> {
-    return null
+    return
   }
 
   filterLists (filter: string, lists: Array<List>): Array<List> {
-    return null
+    return
   }
 
   saveFile (content: string, path: string): void {}
@@ -116,15 +120,15 @@ export class Project {
   setFilter (filter: string): void {}
 
   addMetaToContent(meta: Array<Meta>, content: string): string {
-    return null
+    return
   }
 
   addTagsToContent(tags: Array<string>, content: string ): string {
-    return null
+    return
   }
 
   addContextToContent(contexts: Array<string>, content: string): string {
-    return null
+    return
   }
 
   async updateCardContent (task: Task, content: string): Promise<void> {}

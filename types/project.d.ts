@@ -80,6 +80,7 @@ export declare class Project {
     set filter(filter: string);
     init(repo: any): void;
     destroy(): void;
+    renderMarkdown(content: string): string;
     newCard(opts: NewCardOpts): void;
     addCardToFile(opts: AddCardToFileOpts): Promise<AddCardToFileResponse>;
     filterLists(filter: string, lists: Array<List>): Array<List>;
