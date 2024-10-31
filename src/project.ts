@@ -101,6 +101,10 @@ export class Project {
 
   destroy (): void {}
 
+  getAllCards (filter?: string): Array<Task> {
+    return
+  }
+
   renderMarkdown (content: string): string {
     return
   }
