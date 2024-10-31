@@ -99,5 +99,4 @@ export declare class Project {
     copyToClipboard(text: string, message: string): Promise<void>;
     openUrl(url: string): Promise<void>;
     openPath(path: string): Promise<void>;
-    getCards(filter: string): Array<Task>;
 }

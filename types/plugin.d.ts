@@ -35,11 +35,13 @@ export declare abstract class Plugin {
     private project;
     private unimplWarning;
     constructor(project: Project);
+    init(): Promise<void>;
     destroy(): void;
     onBeforeAddTask(request: OnBeforeAddTaskRequest): Promise<OnBeforeAddTaskResponse>;
     onBeforeBoardUpdate(): void;
     onBoardUpdate(lists: Array<List>): void;
     onTaskUpdate(task: Task): void;
+    onTaskFound(task: Task): Promise<void>;
     onAfterDeleteTask(task: Task): void;
     getCardProperties(task: Task): Object;
     getCardActions(task: Task): Array<CardAction>;

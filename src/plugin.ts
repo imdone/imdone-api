@@ -48,6 +48,10 @@ export abstract class Plugin {
     this.unimplWarning = {}
   }
 
+  async init (): Promise<void> {
+    this.unimplemented('init()')
+  }
+  
   destroy (): void {}
   
   async onBeforeAddTask (request: OnBeforeAddTaskRequest): Promise<OnBeforeAddTaskResponse> {
@@ -66,6 +70,10 @@ export abstract class Plugin {
 
   onTaskUpdate (task: Task) {
     this.unimplemented('onTaskUpdate(task: Task)')
+  }
+
+  async onTaskFound(task: Task): Promise<void> {
+    this.unimplemented('onTaskFound(task: Task)')
   }
 
   onAfterDeleteTask (task: Task) {
