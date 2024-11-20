@@ -64,7 +64,7 @@ export abstract class Plugin {
     this.unimplemented('onBeforeBoardUpdate()')
   }
   
-  onBoardUpdate (lists: Array<List>) {
+  async onBoardUpdate (lists: Array<List>) {
     this.unimplemented('onBoardUpdate(lists: Array<List>)')
   }
 
