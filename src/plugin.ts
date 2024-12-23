@@ -13,6 +13,7 @@ export interface BoardAction {
   action: (task?: Task) => void
   title: string
   keys?: Array<string>
+  icon?: string
 }
 
 export interface Meta {
