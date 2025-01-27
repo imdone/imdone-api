@@ -3,7 +3,6 @@ import { Settings } from './settings';
 export interface CardAction {
     action: Function;
     title: string;
-    pack: 'fas' | 'fab';
     icon: string;
 }
 export interface BoardAction {
