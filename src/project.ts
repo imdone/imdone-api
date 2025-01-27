@@ -93,6 +93,10 @@ export class Project {
     return
   }
 
+  get updatedAt (): Date {
+    return
+  }
+
   set filter (filter: string) {
     //
   }
