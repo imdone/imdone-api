@@ -77,6 +77,7 @@ export declare class Project {
     get doneList(): string;
     get filter(): string;
     get filteredCards(): Array<Task>;
+    get updatedAt(): Date;
     set filter(filter: string);
     init(repo: any): void;
     destroy(): void;
