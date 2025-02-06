@@ -49,7 +49,7 @@ export declare abstract class Plugin {
     /**
      * Hook that is called before the board is updated.
      */
-    onBeforeBoardUpdate(): void;
+    onBeforeBoardUpdate(): Promise<void>;
     /**
      * Hook that is called when the board is updated.
      * @param {Array<List>} lists - The updated lists.
@@ -77,6 +77,11 @@ export declare abstract class Plugin {
      * @returns {Object} - The card properties.
      */
     getCardProperties(task: Task): Object;
+    /**
+     * Gets the properties of the board.
+     * @returns {Object} - The board properties.
+     */
+    getBoardProperties(): Object;
     /**
      * Gets the actions available for a card.
      * @param {Task} task - The task associated with the card.
