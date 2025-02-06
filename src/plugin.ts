@@ -71,7 +71,7 @@ export abstract class Plugin {
   /**
    * Hook that is called before the board is updated.
    */
-  onBeforeBoardUpdate () {
+  async onBeforeBoardUpdate () {
     this.unimplemented('onBeforeBoardUpdate()')
   }
   
@@ -115,6 +115,15 @@ export abstract class Plugin {
    */
   getCardProperties (task: Task): Object {
     this.unimplemented('getCardProperties(task: Task)')
+    return {}
+  }
+
+  /**
+   * Gets the properties of the board.
+   * @returns {Object} - The board properties.
+   */
+  getBoardProperties (): Object {
+    this.unimplemented('getBoardProperties()')
     return {}
   }
 
