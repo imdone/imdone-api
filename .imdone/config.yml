@@ -16,40 +16,44 @@ code:
 lists:
   - filter: 'dueDate < "${tomorrow at 6AM}" AND list != DONE +dueDate +order'
     hidden: true
-    id: 0
+    id: jea6193xm70o9zzo
     name: What's Due?
   - hidden: false
     name: NOTE
+    id: jea6193xm70o9zzp
   - hidden: false
     name: TODO
+    id: jea6193xm70o9zzq
   - hidden: false
     name: DOING
+    id: jea6193xm70o9zzr
   - hidden: false
     ignore: false
     name: DONE
+    id: jea6193xm70o9zzs
   - filter: 'completedDate > "${7 days ago}" -completed'
     hidden: false
-    id: 1
+    id: jea6193xm70o9zzt
     name: Recently Completed
 settings:
   openIn: code
-  customOpenIn: ''
-  editorTheme: blackboard
+  openCodeIn: default
   journalType: New File
   journalPath: imdone-tasks
   appendNewCardsTo: ''
   newCardSyntax: MARKDOWN
   replaceSpacesWith: '-'
-  filteredLists:
-    - filter: 'dueDate < "${tomorrow at 6AM}" AND list != DONE +dueDate +order'
-      name: What's Due?
-    - filter: 'completedDate > "${7 days ago}" -completed'
-      name: Recently Completed
+  plugins:
+    devMode: false
   journalTemplate: null
+  markdownOnly: false
+  customOpenIn: ''
+  editorTheme: blackboard
   theme: dark
-  views:
-    - id: default
-      filter: ''
+  views: []
+  name: imdone-api
+  defaultFilter: ''
+  kudosProbability: 0.33
   cards:
     colors: []
     template: |
@@ -57,22 +61,26 @@ settings:
       <!--
       created:${(new Date()).toISOString()}
       -->
+    trackChanges: false
+    metaNewLine: false
+    addCompletedMeta: true
+    addCheckBoxTasks: true
+    doingList: DOING
+    doneList: DONE
+    tokenPrefix: '#'
+    taskPrefix: '#'
+    tagPrefix: '#'
+    metaSep: ':'
+    orderMeta: true
+    maxLines: 6
+    addNewCardsToTop: true
+    showTagsAndMeta: true
     links:
       - href: >-
           https://twitter.com/intent/tweet?text=${encodedText}%0ATweeted%20with%20@imdoneio
         icon: twitter
         pack: fab
         title: Tweet this card
-    trackChanges: false
-    metaNewLine: false
-    addCompletedMeta: true
-    addCheckBoxTasks: true
-    doneList: DONE
-    taskPrefix: '#'
-    tagPrefix: '#'
-    metaSep: ':'
-    maxLines: 6
-    addNewCardsToTop: true
     computed:
       date: '${(new Date()).toDateString()}'
       time: '${(new Date()).toLocaleTimeString()}'
@@ -81,6 +89,7 @@ settings:
       dueEmoji: !<tag:yaml.org,2002:js/function> |-
         function anonymous(
         ) {
+
         const due = this.totals["What's Due?"]
           let emoji = ':2nd_place_medal:'
           if (due >= 3) {
@@ -89,10 +98,12 @@ settings:
             emoji = ':rocket:'
           }
           return `<span style="font-size: 1.5em;">${emoji}</span>`
+
         }
       recentEmoji: !<tag:yaml.org,2002:js/function> |-
         function anonymous(
         ) {
+
         const recentlyCompleted = this.totals["Recently Completed"]
           let emoji = ':2nd_place_medal:'
           if (recentlyCompleted >= 3) {
@@ -101,10 +112,12 @@ settings:
             emoji = ':fire:'
           }
           return `<span style="font-size: 1.5em;">${emoji}</span>`
+
         }
       wipEmoji: !<tag:yaml.org,2002:js/function> |-
         function anonymous(
         ) {
+
         const doing = this.totals["DOING"]
           let emoji = ':2nd_place_medal:'
           if (doing >= 3) {
@@ -115,5 +128,8 @@ settings:
             emoji = ':rocket:'
           }
           return `<span style="font-size: 1.5em;">${emoji}</span>`
+
         }
     defaultList: TODO
+    archiveCompleted: true
+    archiveFolder: imdone-tasks/archive

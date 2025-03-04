@@ -9,46 +9,136 @@ export interface Meta {
  * Represents a task with various properties.
  */
 export interface Task {
+    /**
+     * Represents the state of the task.
+     */
     active: boolean;
+    /**
+     * All context strings associated with the task.
+     */
     allContext: Array<string>;
+    /**
+     * All metadata associated with the task, where each key maps to an array of strings.
+     */
     allMeta: {
         [key: string]: Array<string>;
     };
+    /**
+     * All tags associated with the task.
+     */
     allTags: Array<string>;
+    /**
+     * Text before the main content.
+     */
     beforeText: string;
+    /**
+     * Main content of the task.
+     */
     content: string;
+    /**
+     * Context strings associated with the task.
+     */
     context: Array<string>;
+    /**
+     * Creation timestamp of the task.
+     */
     created: string;
+    /**
+     * Creation date of the task as a Date object.
+     */
     createdDate: Date;
+    /**
+     * Data associated with the task. This is added by plugins and extensions, through properties.
+     */
     data: object;
+    /**
+     * Indicates whether the task is expanded in the UI.
+     */
     expand: boolean;
+    /**
+     * Front matter of the file the task is in.
+     */
     frontMatter: object;
+    /**
+     * Name of the filtered list if the task is in a filteredList.
+     */
     filteredListName: string;
+    /**
+     * Interpreted content of the task, after processing.
+     */
     interpretedContent: string;
+    /**
+     * The last line number of this task in it's file.
+     */
     lastLine: number;
+    /**
+     * The line number of this task in it's file.
+     */
     line: number;
+    /**
+     * The list to which the current item belongs.
+     */
     list: string;
+    /**
+     * Metadata associated with the current item, where each key maps to an array of strings.
+     */
     meta: {
         [key: string]: Array<string>;
     };
+    /**
+     * Keys of the metadata associated with the current item.
+     */
     metaKeys: Array<string>;
+    /**
+     * Order of the current item within its list.
+     */
     order: number;
+    /**
+     * Progress information for the task.
+     */
     progress: {
+        /**
+         * Number of completed items.
+         */
         completed: number;
+        /**
+         * Total number of items.
+         */
         total: number;
     };
+    /**
+     * Source information for the task.
+     */
     source: {
+        /**
+         * Creation time of the source file.
+         */
         createdTime: string;
+        /**
+         * Path to the source file.
+         */
         path: string;
+        /**
+         * Language of the source file.
+         */
         lang: string;
+        /**
+         * Extension of the source file.
+         */
         ext: string;
+        /**
+         * Last modified time of the source file.
+         */
         modifiedTime: string;
     };
+    /**
+     * Tags associated with the current item.
+     */
     tags: Array<string>;
-    totals: {
-        [key: string]: number;
-    };
-    type: 'CODE' | 'HASHTAG' | 'HASH_META_ORDER' | 'MARKDOWN';
+    /**
+     * Type of Task.
+     */
+    type: 'CODE' | 'HASHTAG' | 'MARKDOWN';
 }
 /**
  * Represents a list with a name and filter.

@@ -120,9 +120,9 @@ export abstract class Plugin {
 
   /**
    * Gets the properties of the board.
-   * @returns {Object} - The board properties.
+   * @returns {Promise<Object>} - The board properties.
    */
-  getBoardProperties (): Object {
+  async getBoardProperties (): Promise<Object> {
     this.unimplemented('getBoardProperties()')
     return {}
   }

@@ -1,7 +1,6 @@
 # imdone-api
 
-A plugin api for [imdone: Kanban with extreme context](https://imdone.io/).
-Starting in Imdone 2.0, you will be able to search and download plugins. In the mean time, you can get started creating and sharing plugins with the community.
+A plugin api for [imdone: Kanban for Developers: In Your Markdown and Code](https://imdone.io/).
 
 ## Creating a plugin for Imdone
 1. Create a `plugins` folder under your project's `.imdone` folder.
@@ -19,6 +18,7 @@ Starting in Imdone 2.0, you will be able to search and download plugins. In the 
            └── package.json
    ```
 1. Look at [imdone/imdone-sample-plugin: A sample plugin for Imdone](https://github.com/imdone/imdone-sample-plugin) for inspiration.
+1. Review the plugin [api docs](https://imdone.github.io/imdone-api/)
 2. To make your plugin available for all imdone users, open a PR at [imdone/imdone-plugins](https://github.com/imdone/imdone-plugins). 
 
 ## Join the discussion on [discord](https://discord.gg/ZAETw2dC)
