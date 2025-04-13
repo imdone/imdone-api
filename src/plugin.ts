@@ -165,7 +165,7 @@ export abstract class Plugin {
 
   private unimplemented (signature: string) {
     if (this.unimplWarning[signature]) return
-    console.info(`${this.constructor.name}.${signature} is not implemented.`)
+    // console.info(`${this.constructor.name}.${signature} is not implemented.`)
     this.unimplWarning[signature] = true
   }
 }
