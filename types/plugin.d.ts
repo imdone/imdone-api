@@ -79,7 +79,7 @@ export declare abstract class Plugin {
     getCardProperties(task: Task): Object;
     /**
      * Gets the properties of the board.
-     * @returns {Object} - The board properties.
+     * @returns {Promise<Object>} - The board properties.
      */
     getBoardProperties(): Promise<Object>;
     /**
