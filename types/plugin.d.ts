@@ -35,6 +35,7 @@ export declare abstract class Plugin {
     private project;
     private unimplWarning;
     constructor(project: Project);
+    static get pluginName(): string;
     init(): Promise<void>;
     /**
      * Destroys the plugin instance.

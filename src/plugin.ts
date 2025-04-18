@@ -48,6 +48,10 @@ export abstract class Plugin {
     this.unimplWarning = {}
   }
 
+  static get pluginName (): string {
+    return 'Plugin'
+  }
+
   async init (): Promise<void> {
     this.unimplemented('init()')
   }
