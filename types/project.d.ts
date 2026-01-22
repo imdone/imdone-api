@@ -175,6 +175,13 @@ export interface AddCardToFileResponse {
     task: Task;
 }
 /**
+ * Represents project configuration.
+ */
+export interface Config {
+    devMode: boolean;
+    [key: string]: any;
+}
+/**
  * Represents an alert message with optional type and duration.
  */
 export interface Alert {
@@ -186,11 +193,14 @@ export interface Alert {
  * Represents a project with lists, tasks, and various actions.
  */
 export declare class Project {
-    config: any;
     /**
      * Gets the project path.
      */
     get path(): string;
+    /**
+     * Gets the project configuration.
+     */
+    get config(): Config;
     /**
      * Gets all lists in the project.
      */
