@@ -217,6 +217,7 @@ export interface Alert {
  * Represents a project with lists, tasks, and various actions.
  */
 export class Project {
+  config: any
   /**
    * Gets the project path.
    */
